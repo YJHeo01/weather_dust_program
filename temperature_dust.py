@@ -22,7 +22,7 @@ def getWeather(X,Y):
     if(base_time<1000):base_time = "0" + str(base_time)
     base_date = 10000*year+100*month+day
     url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst'
-    params ={"serviceKey" : 'PG2hc%2BHL8ELG5xJzPg1PKHHjzv9c0FRZvgeF8uqM%2FmaDidrBmzCUChga9zJnwREfdOzMVy6g1QCKz%2Fl%2Bc9Hx4g%3D%3D', "pageNo" : "1", "numOfRows" : "1000", "dataType" : "json", "base_date" : str(base_date), "base_time" : str(base_time), "nx" : str(X), "ny" : str(Y) }
+    params ={"serviceKey" : '', "pageNo" : "1", "numOfRows" : "1000", "dataType" : "json", "base_date" : str(base_date), "base_time" : str(base_time), "nx" : str(X), "ny" : str(Y) }
     response = requests.get(url, params=params)
     #print(response.content)
     response_body = response.json()["response"]["body"]["items"]
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     kf_mask = 0
     dong = input("궁금한 동을 입력해주세요. : ")
     city="인천"
-    key = "PG2hc%2BHL8ELG5xJzPg1PKHHjzv9c0FRZvgeF8uqM%2FmaDidrBmzCUChga9zJnwREfdOzMVy6g1QCKz%2Fl%2Bc9Hx4g%3D%3D"
+    key = ""
     Section=getSection(dong)
     response = getAirQualityByCity(city,key)
     if(response.status_code == 200):
